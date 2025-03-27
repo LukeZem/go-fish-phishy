@@ -1,11 +1,9 @@
 import sys
-
-# import time
+import time
 import os
 import re
-
-# import struct
-# import tempfile
+import struct
+import tempfile
 from email import policy
 from email.parser import BytesParser
 import extract_msg
@@ -25,6 +23,7 @@ from PyQt5.QtWidgets import (
     QTableWidgetItem,
     QHeaderView,
 )
+from PyQt5.QtGui import QFont
 
 
 # ======================================== Header Parsing Functions ========================================
@@ -387,7 +386,18 @@ class GoFishPhishy(QWidget):
 
 
 if __name__ == "__main__":
+    # Enable high-DPI scaling
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+
+    # Create the application
     app = QApplication(sys.argv)
+
+    # Set a default font size for better readability
+    font = QFont("Segoe UI", 12)  # Adjust the font size as needed
+    app.setFont(font)
+
+    # Launch the application
     window = GoFishPhishy()
     window.show()
     sys.exit(app.exec_())
